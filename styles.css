@@ -1,19 +1,38 @@
+:root {
+  --bg-color: #f0f0f0;
+  --container-bg: white;
+  --text-color: #333;
+  --input-border: #ccc;
+  --item-border: #eee;
+}
+
+body.dark-mode {
+  --bg-color: #121212;
+  --container-bg: #1e1e1e;
+  --text-color: #e0e0e0;
+  --input-border: #444;
+  --item-border: #333;
+}
+
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-  background-color: white;
+  background-color: var(--container-bg);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 300px;
+  position: relative;
 }
 
 h1 {
@@ -28,8 +47,10 @@ h1 {
 #todo-input {
   flex: 1;
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--input-border);
   border-radius: 4px 0 0 4px;
+  background-color: var(--container-bg);
+  color: var(--text-color);
 }
 
 #add-btn {
@@ -54,7 +75,7 @@ li {
   display: flex;
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--item-border);
 }
 
 .checkbox {
@@ -79,6 +100,12 @@ span {
   cursor: pointer;
 }
 
-.delete-btn:hover {
-  background-color: #da190b;
+#theme-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
 }

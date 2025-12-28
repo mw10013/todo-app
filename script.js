@@ -2,6 +2,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const todoInput = document.getElementById("todo-input");
   const addBtn = document.getElementById("add-btn");
   const todoList = document.getElementById("todo-list");
+  const themeToggle = document.getElementById("theme-toggle");
+
+  // Check for saved theme preference
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+  }
+
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    const theme = document.body.classList.contains("dark-mode")
+      ? "dark"
+      : "light";
+    localStorage.setItem("theme", theme);
+  });
 
   addBtn.addEventListener("click", addTodo);
   todoInput.addEventListener("keypress", function (e) {
@@ -39,8 +54,4 @@ document.addEventListener("DOMContentLoaded", function () {
     todoList.appendChild(li);
     todoInput.value = "";
   }
-
-  // Note: The checkbox event listener is now inside the function, but actually it's after.
-  // Wait, in my previous edit, the checkbox event is inside addTodo.
-  // Let me check the current script.
 });
