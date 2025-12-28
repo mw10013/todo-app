@@ -52,13 +52,25 @@ ul {
 
 li {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid #eee;
 }
 
+.checkbox {
+  margin-right: 10px;
+}
+
+span {
+  flex: 1;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
 .delete-btn {
+  margin-left: 10px;
   background-color: #f44336;
   color: white;
   border: none;

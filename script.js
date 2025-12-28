@@ -14,15 +14,33 @@ document.addEventListener("DOMContentLoaded", function () {
     const todoText = todoInput.value.trim();
     if (todoText === "") return;
     const li = document.createElement("li");
-    li.textContent = todoText;
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "checkbox";
+    checkbox.addEventListener("change", function () {
+      span.classList.toggle("completed");
+    });
+
+    const span = document.createElement("span");
+    span.textContent = todoText;
+
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.className = "delete-btn";
     deleteBtn.addEventListener("click", function () {
       todoList.removeChild(li);
     });
+
+    li.appendChild(checkbox);
+    li.appendChild(span);
     li.appendChild(deleteBtn);
+
     todoList.appendChild(li);
     todoInput.value = "";
   }
+
+  // Note: The checkbox event listener is now inside the function, but actually it's after.
+  // Wait, in my previous edit, the checkbox event is inside addTodo.
+  // Let me check the current script.
 });
